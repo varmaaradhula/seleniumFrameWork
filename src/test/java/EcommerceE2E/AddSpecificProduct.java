@@ -39,6 +39,7 @@ public class AddSpecificProduct {
         List<WebElement> cartItems = driver.findElements(By.xpath("//div[@class='cartSection']/h3"));
         boolean cartMatch = cartItems.stream().anyMatch(cartItem->cartItem.getText().equals(myProd));
         Assert.assertTrue(cartMatch);
+
         driver.findElement(By.xpath("//button[text()='Checkout']")).click();
         driver.findElement(By.xpath("//input[@placeholder='Select Country']")).sendKeys("Ind");
         List<WebElement> countries = driver.findElements(By.cssSelector(".list-group-item span"));
