@@ -1,5 +1,6 @@
-package EcommerceE2E;
+package EcommerceE2ETests;
 
+import com.Bliss.PageObjects.LandingPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,18 +13,21 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AddSpecificProduct {
+public class StandaloneTest {
 
     public static void main(String[] args) {
+
         String myProd = "ZARA COAT 3";
         WebDriver driver = new ChromeDriver();
+        LandingPage lpage = new LandingPage(driver);
         driver.manage().window().maximize();
         WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(8));
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("https://rahulshettyacademy.com/client");
-        driver.findElement(By.id("userEmail")).sendKeys("rkvarmaa@gmail.com");
-        driver.findElement(By.id("userPassword")).sendKeys("Preesha79815");
-        driver.findElement((By.id("login"))).click();
+        lpage.loginApplication("rkvarmaa@gmail.com","Preesha79815");
+        //driver.findElement(By.id("userEmail")).sendKeys("rkvarmaa@gmail.com");
+        //driver.findElement(By.id("userPassword")).sendKeys("Preesha79815");
+        //driver.findElement((By.id("login"))).click();
         List<WebElement> products = driver.findElements(By.cssSelector(".mb-3"));
         System.out.println(products.size());
         WebElement desiredProduct = products.stream().filter(product -> product.findElement(By.tagName("b"))
