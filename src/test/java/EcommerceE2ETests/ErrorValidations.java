@@ -20,4 +20,17 @@ public class ErrorValidations extends BaseTest {
         Assert.assertEquals(landingpage.captureErrorMessage(),"Incorrect email or password.");
     }
 
+    @Test
+    public void productErrorValidation(){
+        String myProd = "ZARA COAT 3";
+        ProductCataloguePage prodpage = landingpage.loginApplication("rkvarmaa@gmail.com", "Preesha79815");
+        List<WebElement> products = prodpage.getProdList();
+        prodpage.getProdByName(myProd);
+        prodpage.addProdToCart(myProd);
+        CartPage cartpage = prodpage.clickOnCart();
+        boolean match = cartpage.verifyProdOnCartPage("ZARA COAT 33");
+        Assert.assertTrue(match);
+
+    }
+
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/Users/varma/Desktop/JavaSelenium/SeleniumFramework">
+        <classes>
+            <class name="EcommerceE2ETests.AddSpecificProduct">
+                <methods>
+                    <include name="submitOrder"/>
+                </methods>
+            </class>
+            <class name="EcommerceE2ETests.ErrorValidations">
+                <methods>
+                    <include name="submitOrder"/>
+                    <include name="productErrorValidation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
